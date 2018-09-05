@@ -21,8 +21,8 @@ task:
                 - brew install mono
                 - brew cask install dotnet
                 - which mono
-                - which dotnet
-                - echo ${PATH}
+                - ls /usr/local/share/dotnet
+                - echo "done installing"
         compile_script:
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
         test_script:
