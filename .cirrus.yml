@@ -21,6 +21,7 @@ task:
                 - brew install mono
                 - brew cask install dotnet
                 - which mono
+                - echo $PATH
                 - ls /usr/local/share/dotnet
                 - echo "done installing"
         compile_script:
