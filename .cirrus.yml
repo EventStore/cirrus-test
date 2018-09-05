@@ -3,5 +3,7 @@ container:
 
 task:
         name: Build (Mono 5.14/Centos 7)
-        compile_script: dotnet msbuild src/cirrus-test.sln
+        env:
+                FrameworkPathOverride: /usr/lib/mono/4.6.2-api
+        compile_script: dotnet msbuild /target:restore,compile src/cirrus-test.sln
         test_script: dotnet test $(find . -maxdepth 1 -type d -name "*.Tests")
