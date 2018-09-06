@@ -19,8 +19,7 @@ task:
         compile_script: 
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
         test_script:
-                # dotnet vstest ((Get-ChildItem -Recurse *.Tests.dll | %% FullName) -Match "\\bin\\")'
-                - powershell -encodedCommand 'ZABvAHQAbgBlAHQAIAB2AHMAdABlAHMAdAAgACgAKABHAGUAdAAtAEMAaABpAGwAZABJAHQAZQBtACAALQBSAGUAYwB1AHIAcwBlACAAKgAuAFQAZQBzAHQAcwAuAGQAbABsACAAfAAgACUAIABGAHUAbABsAE4AYQBtAGUAKQAgAC0ATQBhAHQAYwBoACAAIgBcAFwAYgBpAG4AXABcACIAKQA='
+                - powershell -Command 'dotnet vstest ((Get-ChildItem -Recurse *.Tests.dll | ^^^% FullName) -Match "\\bin\\")'
 
 # TODO(jen20) Fix this
 #task:
