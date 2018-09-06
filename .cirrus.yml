@@ -16,11 +16,10 @@ task:
                 image: microsoft/dotnet-framework:4.7.2-sdk
         env:
                 GIT_CLONE_DEPTH: 1
-                CIRRUS_SHELL: powershell
         compile_script: 
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
         test_script:
-                - dotnet test (Get-ChildItem -Recurse *.Tests.csproj | % FullName)
+                - ps: dotnet test (Get-ChildItem -Recurse *.Tests.csproj | % FullName)
 
 # TODO(jen20) Fix this
 #task:
