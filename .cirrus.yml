@@ -19,7 +19,7 @@ task:
         compile_script: 
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
         test_script:
-                - ps: dotnet test (Get-ChildItem -Recurse *.Tests.csproj | % FullName); if $LASTEXITCODE != 0 { throw("Failed") }
+                - ps: dotnet test (Get-ChildItem -Recurse *.Tests.csproj | % FullName); if ($LASTEXITCODE != 0) { throw("Failed") }
 
 # TODO(jen20) Fix this
 #task:
