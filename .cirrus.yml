@@ -20,9 +20,8 @@ task:
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
         write_test_script:
                 - mkdir .cirrus
-                - ps: echo "FOR /F %%P IN ('dir /b /S *.Tests.csproj') DO dotnet test %%P" | Out-File .cirrus/run-windows-tests.cmd
-                - type .cirrus/run-tests-windows.cmd
-                - .cirrus/run-tests-windows.cmd
+                - ps: echo "FOR /F %%P IN ('dir /b /S *.Tests.csproj') DO dotnet test %%P" | Out-File .cirrus\\run-windows-tests.cmd
+                - .cirrus\\run-tests-windows.cmd
 
 task:
         name: Build (Mono 5.14/Mac OS X High Sierra)
