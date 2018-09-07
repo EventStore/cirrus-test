@@ -19,8 +19,7 @@ task:
         compile_script: 
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
         write_test_script:
-                - mkdir .cirrus
-                - powershell.exe -EncodedCommand ZQBjAGgAbwAgACIARgBPAFIAIAAvAEYAIAAlACUAUAAgAEkATgAgACgAJwBkAGkAcgAgAC8AYgAgAC8AUwAgACoALgBUAGUAcwB0AHMALgBjAHMAcAByAG8AagAnACkAIABEAE8AIABkAG8AdABuAGUAdAAgAHQAZQBzAHQAIAAlACUAUAAiACAAfAAgAE8AdQB0AC0ARgBpAGwAZQAgAC4AYwBpAHIAcgB1AHMAXABcAHIAdQBuAC0AdwBpAG4AZABvAHcAcwAtAHQAZQBzAHQAcwAuAGMAbQBkAA== & .cirrus\\run-tests-windows.cmd
+                - ps: powershell.exe -Command "dotnet test ((Get-ChildItem -Attributes Directory src | % FullName) -Match '.Tests')"
 
 task:
         name: Build (Mono 5.14/Mac OS X High Sierra)
