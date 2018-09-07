@@ -21,19 +21,16 @@ task:
         test_script:
                 - .run-test-windows.cmd
 
-# TODO(jen20) Fix this
-#task:
-#        name: Build (Mono 5.14/Mac OS X High Sierra)
-#        osx_instance:
-#                image: high-sierra-xcode-9.4.1
-#        env:
-#                GIT_CLONE_DEPTH: 1
-#                FrameworkPathOverride: /usr/local/lib/mono/4.6.2-api
-#                PATH: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/dotnet
-#        install_mono_script: 
-#                - brew install mono
-#                - brew cask install dotnet
-#        compile_script:
-#                - dotnet msbuild /target:restore,compile src/cirrus-test.sln
-#        test_script:
-#                - dotnet test $(find ./src -maxdepth 1 -type d -name "*.Tests")
+task:
+        name: Build (Mono 5.14/Mac OS X High Sierra)
+        osx_instance:
+                image: high-sierra-xcode-9.4.1
+        env:
+                GIT_CLONE_DEPTH: 1
+                FrameworkPathOverride: /usr/local/lib/mono/4.6.2-api
+                PATH: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/dotnet
+        build_and_test_script: 
+                - brew cask install dotnet
+                - brew install mono
+                - dotnet msbuild /target:restore,compile src/cirrus-test.sln
+                - dotnet test $(find ./src -maxdepth 1 -type d -name "*.Tests")
