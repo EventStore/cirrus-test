@@ -7,5 +7,10 @@ namespace Library.Tests {
 		public void TestPointless() {
 			Assert.AreEqual("Hello World", new Pointless().DoSomething());
 		}
+
+		[Test]
+		public void TestSuccessShouldSucceedBuild() {
+			Assert.AreEqual(true, true);
+		}
 	}
 }
