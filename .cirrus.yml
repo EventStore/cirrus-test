@@ -29,8 +29,10 @@ task:
                 GIT_CLONE_DEPTH: 1
                 FrameworkPathOverride: /usr/local/lib/mono/4.6.2-api
                 PATH: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/dotnet
-        build_and_test_script: 
-                - brew cask install dotnet
+        install_tools_script: 
+                - brew cask install dotnet dotnet-sdk
                 - brew install mono
+        compile_script:
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
+        test_script:
                 - dotnet test $(find ./src -maxdepth 1 -type d -name "*.Tests")
