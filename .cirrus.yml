@@ -19,10 +19,8 @@ task:
         compile_script: 
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
         write_test_script:
-                - ps: mkdir .cirrus
-                - ps: echo @'
-                        FOR /F %%P IN ('dir /b /S *.Tests.csproj') DO dotnet test %%P
-                        '@ | Out-File .cirrus/run-windows-tests.cmd
+                - mkdir .cirrus
+                - ps: echo "FOR /F %%P IN ('dir /b /S *.Tests.csproj') DO dotnet test %%P" | Out-File .cirrus/run-windows-tests.cmd
                 - type .cirrus/run-tests-windows.cmd
                 - .cirrus/run-tests-windows.cmd
 
