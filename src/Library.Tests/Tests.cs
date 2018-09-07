@@ -9,8 +9,8 @@ namespace Library.Tests {
 		}
 
 		[Test]
-		public void TestFailureShouldFailBuild() {
-			Assert.Fail();
+		public void TestSuccessShouldSucceedBuild() {
+			Assert.AreEqual(true, true);
 		}
 	}
 }
