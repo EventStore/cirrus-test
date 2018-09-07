@@ -20,7 +20,8 @@ task:
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
         test_script:
                 - mkdir .cirrus
-                - echo FOR /F %%P IN ('dir /b /S *.Tests.csproj') DO dotnet test %%P > .cirrus\run-tests-windows.cmd
+                - echo FOR /F %%%%P IN ('dir /b /S *.Tests.csproj') DO dotnet test %%%%P > .cirrus\run-tests-windows.cmd
+                - cat ".cirrus\\run-tests-windows.cmd"
                 - ".cirrus\\run-tests-windows.cmd"
 
 task:
