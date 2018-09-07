@@ -11,6 +11,7 @@ namespace Library.Tests {
 		[Test]
 		public void TestSuccessShouldSucceedBuild() {
 			Assert.AreEqual(true, true);
+			Assert.Fail();
 		}
 	}
 }
