@@ -19,8 +19,9 @@ task:
         compile_script: 
                 - dotnet msbuild /target:restore,compile src/cirrus-test.sln
         test_script:
-                - echo FOR /F %%P IN ('dir /b /S *.Tests.csproj') DO dotnet test %%P > %%TEMP%%\run-tests-windows.cmd
-                - "%%TEMP%%\\run-tests-windows.cmd"
+                - mkdir .cirrus
+                - echo FOR /F %%P IN ('dir /b /S *.Tests.csproj') DO dotnet test %%P > .cirrus\run-tests-windows.cmd
+                - ".cirrus\\run-tests-windows.cmd"
 
 task:
         name: Build (Mono 5.14/Mac OS X High Sierra)
