@@ -21,7 +21,7 @@ task:
         test_script:
                 - mkdir .cirrus
                 - echo FOR /F %%%%P IN ('dir /b /S *.Tests.csproj') DO dotnet test %%%%P > .cirrus\run-tests-windows.cmd
-                - type .\cirrus\run-tests-windows.cmd
+                - type .cirrus\\run-tests-windows.cmd
                 - ".cirrus\\run-tests-windows.cmd"
 
 task:
